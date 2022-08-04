@@ -20,6 +20,7 @@ namespace EducationMvc.Controllers
 
         public IActionResult Index()
         {
+            DateTime  xx=DateTime.Now;
             return View();
         }
 

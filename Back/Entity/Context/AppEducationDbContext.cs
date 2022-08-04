@@ -17,7 +17,7 @@ namespace Entity.Context
     protected  override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+      modelBuilder.ApplyConfiguration(new CategoryConfiguration());
     }
 
         public DbSet<Category> Categories { get; set; }

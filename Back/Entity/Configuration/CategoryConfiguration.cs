@@ -6,11 +6,8 @@ namespace Entity.Configuration
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Category> builder)
         {
-            builder.Ignore(d => d.Parient);
-            builder.HasOne(o => o.Parient).WithOne(d=>d.Parient).
-                HasForeignKey<Category>(d => d.ParientId).
-                OnDelete(DeleteBehavior.NoAction);
-         
+           builder.Property(p=>p.ParentID).HasDefaultValue(0);
+          builder.HasMany(d=>d.Subcategories).WithOne().HasForeignKey(d=>d.ParentID).OnDelete(DeleteBehavior.ClientCascade);
         }
     }
 }
