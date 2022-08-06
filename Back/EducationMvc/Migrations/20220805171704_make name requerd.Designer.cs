@@ -4,14 +4,16 @@ using Entity.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EducationMvc.Migrations
 {
     [DbContext(typeof(AppEducationDbContext))]
-    partial class AppEducationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220805171704_make name requerd")]
+    partial class makenamerequerd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

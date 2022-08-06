@@ -4,14 +4,16 @@ using Entity.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EducationMvc.Migrations
 {
     [DbContext(typeof(AppEducationDbContext))]
-    partial class AppEducationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220805171038_exam model")]
+    partial class exammodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +50,6 @@ namespace EducationMvc.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AnswerTxt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsCorrect")
@@ -82,7 +83,6 @@ namespace EducationMvc.Migrations
                         .HasDefaultValue(false);
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartOfExam")
@@ -110,7 +110,6 @@ namespace EducationMvc.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("QuestionDesc")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("QuestionType")

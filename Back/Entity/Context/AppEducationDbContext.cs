@@ -2,6 +2,7 @@ using System;
 using Entity.Configuration;
 using Entity.Core;
 using Entity.Core.authentication;
+using Entity.Core.Exam;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,8 +19,14 @@ namespace Entity.Context
     {
         base.OnModelCreating(modelBuilder);
       modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+      modelBuilder.ApplyConfiguration(new AnswerConfiguration());
+      modelBuilder.ApplyConfiguration(new QuestionConfiguration());
+      modelBuilder.ApplyConfiguration(new ExamConfiguration());
     }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Exam> Exams  { get; set; }
     }
 }
