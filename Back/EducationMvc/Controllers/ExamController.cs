@@ -1,21 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EducationMvc.Models;
+using Services.Interface;
+using Entity.Dto;
 
 namespace EducationMvc.Controllers
 {
     public class ExamController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IExamModalService _examModalService;
 
-        public ExamController(ILogger<HomeController> logger)
+        public ExamController(ILogger<HomeController> logger,IExamModalService examModalService)
         {
             _logger = logger;
+            _examModalService=examModalService;
         }
 
         public IActionResult Index()
@@ -26,6 +27,12 @@ namespace EducationMvc.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+       [HttpPost]
+         public IActionResult addExam( addExamDto addExamDto)
+        {
+            _examModalService.AddExam(addExamDto);
             return View();
         }
 

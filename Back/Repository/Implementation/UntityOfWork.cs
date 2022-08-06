@@ -37,5 +37,10 @@ namespace Repository.Implementation
                    
                 } 
         }
+
+        public int SaveChane ()
+        {
+            return  _context.SaveChanges();  
+        }
     }
 }

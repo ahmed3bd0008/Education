@@ -1,23 +1,42 @@
 
+using System;
 using System.Collections.Generic;
+using AutoMapper;
+using Entity.Core.Exam;
 using Entity.Dto;
+using Repository.Interface;
 using Services.Interface;
 
 namespace Services.Implemetation
 {
     public class ExamModalService : IExamModalService
     {
-        public AnswerDto AddAnswer(ExamDto examDto)
+        private readonly IUntityOfWork _untityOfWork;
+        private readonly IMapper _mapper;
+
+        public AnswerDto AddAnswer(addAnswerDto addAnswerDto)
         {
             throw new System.NotImplementedException();
         }
 
-        public ExamDto AddExam(ExamDto examDto)
+        public ExamDto AddExam(addExamDto examDto)
         {
-            throw new System.NotImplementedException();
+            try{
+            Exam examDb=_mapper.Map<Exam>(examDto);
+            _untityOfWork.ExamRepository.AddEntity(examDb);
+            _untityOfWork.SaveChane();
+            ExamDto examDtoget=_mapper.Map<ExamDto>(examDto);
+            examDtoget.Id=examDb.Id;
+            return examDtoget ;
+            }
+            catch(Exception ex)
+            {
+                return new ExamDto();
+            }
+
         }
 
-        public QestionDto AddQestion(ExamDto examDto)
+        public QestionDto AddQestion(addQuestionDto addQuestionDto)
         {
             throw new System.NotImplementedException();
         }
@@ -57,7 +76,7 @@ namespace Services.Implemetation
             throw new System.NotImplementedException();
         }
 
-        public AnswerDto updateAnswer(UpdateExamDto examDto)
+        public AnswerDto updateAnswer(UpdateAnswerDto updateAnswerDto)
         {
             throw new System.NotImplementedException();
         }
@@ -67,7 +86,7 @@ namespace Services.Implemetation
             throw new System.NotImplementedException();
         }
 
-        public QestionDto updateQuestion(UpdateExamDto examDto)
+        public QestionDto updateQuestion(UpdateQustionDto updateQustionDto)
         {
             throw new System.NotImplementedException();
         }

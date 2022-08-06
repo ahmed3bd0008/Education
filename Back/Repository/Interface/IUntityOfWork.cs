@@ -9,5 +9,7 @@ namespace Repository.Interface
           IGenericRepository<Answer> AnswerRepository { get; }
           IGenericRepository<Question> QuestionRepository { get; }
           IGenericRepository<Exam> ExamRepository { get; }
+          int SaveChane() ;
+
     }
 }

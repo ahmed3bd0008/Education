@@ -6,6 +6,10 @@ namespace Entity.Core.Exam
 {
     public class Exam:EntityId
     {
+        public Exam()
+        {
+            Questions=new List<Question>();
+        }
         public string Name { get; set; }
         public DateTime   StartOfExam { get; set; }
         public DateTime ? EndOfExam { get; set; }
