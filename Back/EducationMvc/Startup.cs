@@ -29,7 +29,6 @@ namespace EducationMvc
             services.configurationRepositoryMethod();
             services.configurationServicesMethod();
             services.AddAutoMapper(typeof(AppProfileConfiguration));
-            Console.WriteLine(Configuration.GetConnectionString("Education"));
             services.ConnectedSql(Configuration);
             //Authenication 
             services.AddAuthentication();

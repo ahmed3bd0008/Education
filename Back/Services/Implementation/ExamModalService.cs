@@ -13,7 +13,11 @@ namespace Services.Implemetation
     {
         private readonly IUntityOfWork _untityOfWork;
         private readonly IMapper _mapper;
-
+public ExamModalService(IMapper mapper,IUntityOfWork untityOfWork)
+{
+    _mapper=mapper;
+    _untityOfWork=untityOfWork;
+}
         public AnswerDto AddAnswer(addAnswerDto addAnswerDto)
         {
             throw new System.NotImplementedException();
@@ -25,7 +29,7 @@ namespace Services.Implemetation
             Exam examDb=_mapper.Map<Exam>(examDto);
             _untityOfWork.ExamRepository.AddEntity(examDb);
             _untityOfWork.SaveChane();
-            ExamDto examDtoget=_mapper.Map<ExamDto>(examDto);
+            ExamDto examDtoget=_mapper.Map<ExamDto>(examDb);
             examDtoget.Id=examDb.Id;
             return examDtoget ;
             }
