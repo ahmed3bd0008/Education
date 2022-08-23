@@ -2,6 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using Entity.Dto;
+using Services.respondService;
 
 namespace Services.Interface
 {
@@ -10,7 +11,7 @@ namespace Services.Interface
         public ExamDto AddExam(addExamDto examDto);
         public ExamDto updateExam(UpdateExamDto examDto);
         public IList< ExamDto> GetExams();
-        public ExamDto GetExam();
+        public ResponedService<List< ExamDto>> GetExam();
         public int DeleteExam(int examId);
         public AnswerDto AddAnswer(addAnswerDto addAnswerDto);
         public AnswerDto updateAnswer(UpdateAnswerDto updateAnswerDto);

@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EducationMvc.Models;
+using Services.Interface;
 
 namespace EducationMvc.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IExamModalService _examModalService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,IExamModalService examModalService)
         {
             _logger = logger;
+            _examModalService=examModalService;
         }
 
         public IActionResult Index()
@@ -26,6 +29,7 @@ namespace EducationMvc.Controllers
 
         public IActionResult Privacy()
         {
+            _examModalService.GetExam();
             return View();
         }
 

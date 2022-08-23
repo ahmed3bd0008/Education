@@ -6,6 +6,7 @@ using Entity.Core.Exam;
 using Entity.Dto;
 using Repository.Interface;
 using Services.Interface;
+using Services.respondService;
 
 namespace Services.Implemetation
 {
@@ -93,6 +94,12 @@ public ExamModalService(IMapper mapper,IUntityOfWork untityOfWork)
         public QestionDto updateQuestion(UpdateQustionDto updateQustionDto)
         {
             throw new System.NotImplementedException();
+        }
+
+        ResponedService<List<ExamDto>> IExamModalService.GetExam()
+        {
+            return  new ResponedService<List<ExamDto>>(status:true,Data:new List<ExamDto>());
+        
         }
     }
 }
